@@ -28,7 +28,3 @@ def get_python_news():
             "published": date_published
         })
     return news_list
-
-if __name__ == "__main__":
-    data = get_python_news()
-    print(data)
