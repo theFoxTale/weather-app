@@ -16,6 +16,8 @@
     basedir = os.path.abspath(os.path.dirname(__file__))
     db_path = os.path.join(basedir, '..', 'webapp.db')
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + db_path
+
+    SECRET_KEY = криптографический ключ для генерации подписей или токенов
     ```
 
 ## Запуск программы
