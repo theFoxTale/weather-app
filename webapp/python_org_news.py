@@ -4,6 +4,7 @@ import requests
 
 from webapp.model import db, News
 
+
 def get_html(url):
     try:
         result = requests.get(url)
@@ -13,6 +14,7 @@ def get_html(url):
         print("Возникла сетевая ошибка")
         return False
 
+
 def get_python_news():
     my_html = get_html("https://www.python.org/blogs/")
     if not my_html:
@@ -20,7 +22,6 @@ def get_python_news():
 
     soup = BeautifulSoup(my_html, 'html.parser')
     all_news = soup.find('ul', class_='list-recent-posts').findAll('li')
-    news_list = []
     for news in all_news:
         title = news.find('a').text
         url = news.find('a')['href']
@@ -32,6 +33,7 @@ def get_python_news():
             date_published = datetime.now()
 
         save_news_in_db(title, url, date_published)
+
 
 def save_news_in_db(title, url, published):
     is_news_exist = News.query.filter(News.url == url).count()

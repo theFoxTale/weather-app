@@ -1,6 +1,7 @@
 from flask import current_app
 import requests
 
+
 def get_weather_by_city(city_name):
     weather_url = current_app.config['WEATHER_URL']
     params = {
@@ -15,7 +16,7 @@ def get_weather_by_city(city_name):
         result = requests.get(weather_url, params=params)
         result.raise_for_status()
         weather = result.json()
-    
+
         if 'data' in weather:
             if 'current_condition' in weather['data']:
                 try:
